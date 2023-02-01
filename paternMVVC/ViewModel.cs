@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace paternMVVC
@@ -11,6 +12,7 @@ namespace paternMVVC
     class ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+       
         public List<string> ComboChange // свойство для заполнения Combobox
         {
             get
@@ -73,7 +75,11 @@ namespace paternMVVC
         }
         public RoutedCommand Command { get; set; } = new RoutedCommand();
         public CommandBinding bind;
+        private void OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "0123456789,".IndexOf(e.Text) < 0;
 
+        }
         public void Command_Executed(object sender, ExecutedRoutedEventArgs e)
         {
 
@@ -87,7 +93,13 @@ namespace paternMVVC
                     Model.count = firstNum - secondNum;
                     break;
                 case 2:
-                    Model.count = firstNum / secondNum;
+                   
+                    if(secondNum== 0 | firstNum==0)
+                    {
+                        MessageBox.Show("Делить на 0 нельзя!");
+                    }
+                    else Model.count = firstNum / secondNum;
+
                     break;
                 case 3:
                     Model.count = firstNum * secondNum;
@@ -100,7 +112,8 @@ namespace paternMVVC
         public ViewModel()
         {
             bind = new CommandBinding(Command);  // инициализация объекта для привязки данных
-            bind.Executed += Command_Executed; // добавление обработчика событий
+            bind.Executed += Command_Executed;
+            // добавление обработчика событий
         }
     }
 }

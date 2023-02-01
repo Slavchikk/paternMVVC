@@ -15,9 +15,9 @@
 
 
             <StackPanel Margin ="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox   PreviewTextInput = "OnPreviewTextInput" Text="{Binding TBFirst}"  Margin ="12,0,10,0"  x:Name="firstNum" Width="50"></TextBox>
+                <TextBox   Text="{Binding TBFirst}"  Margin ="12,0,10,0"  x:Name="firstNum" Width="50"></TextBox>
                 <TextBlock Text="{Binding CBIndex}" x:Name="TBznak"></TextBlock>
-                <TextBox  PreviewTextInput = "OnPreviewTextInput" Text="{Binding TBSecond}"   Margin ="12,0,10,0" x:Name="secondNum" Width="50"></TextBox>
+                <TextBox  Text="{Binding TBSecond}"   Margin ="12,0,10,0" x:Name="secondNum" Width="50"></TextBox>
             </StackPanel>
             <Button Command="{Binding Command}" Margin ="0,10,0,0" Name="BtnCount" >Вычислить</Button>
             <GroupBox  HorizontalAlignment="Center" Header="Результат:">

@@ -27,10 +27,6 @@ namespace paternMVVC
             DataContext = VM;  // добавление объекта VievModel в ресурсы страницы
             CommandBindings.Add(VM.bind);  // добавление объекта привязки на страницу
         }
-        private void OnPreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = "0123456789,".IndexOf(e.Text) < 0;
-          
-        }
+        // PreviewTextInput = "OnPreviewTextInput"
     }
 }
